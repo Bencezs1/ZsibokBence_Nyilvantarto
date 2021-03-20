@@ -122,10 +122,17 @@ namespace Nyilvantarto
                 Kolcson.ItemsSource = l3;
                 Kolcson.AutoGenerateColumns = false;
         }
-
-        private void Kolcson_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+            var keres = l.Where(x => x.cim.Contains(tx.Text));
+            if (tx.Text==null)
+            {
+                Konyv.ItemsSource = l;
+            }
+            else
+            {
+                Konyv.ItemsSource = keres;
+            }
         }
     }
 }

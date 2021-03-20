@@ -10,9 +10,10 @@
         <TabControl>
             <TabItem Name="Konyvek" Header="Könyvek" Loaded="Konyvek_Loaded">
                 <DockPanel>
-                    <DataGrid x:Name="Konyv">
+                    <TextBox x:Name="tx" Height="31" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" TextChanged="TextBox_TextChanged"/>
+                    <DataGrid x:Name="Konyv" Margin="0,69,0,0" Width="1270">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="KönyvId" Binding="{Binding id}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="KönyvId" Binding="{Binding id}" IsReadOnly="True"></DataGridTextColumn>
                             <DataGridTextColumn Header="Szerző" Binding="{Binding szerzo}"></DataGridTextColumn>
                             <DataGridTextColumn Header="Könyv Cime" Binding="{Binding cim}"></DataGridTextColumn>
                             <DataGridTextColumn Header="Kiadás éve" Binding="{Binding ev}"></DataGridTextColumn>
@@ -38,7 +39,15 @@
             </TabItem>
             <TabItem Name="Kolcsonzes" Header="Kölcsönzés" Loaded="Kolcsonzes_Loaded">
                 <DockPanel>
-                    <DataGrid x:Name="Kolcson" SelectionChanged="Kolcson_SelectionChanged" Margin="0,48,0,0">
+                    <DataGrid x:Name="Kolcson" Width="783">
+                        <DataGrid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleY="0.101"/>
+                                <RotateTransform/>
+                                <TranslateTransform Y="0.665"/>
+                            </TransformGroup>
+                        </DataGrid.RenderTransform>
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="KölcsönzésId" Binding="{Binding kolcsonid}">
                             </DataGridTextColumn>
@@ -48,16 +57,10 @@
                             <DataGridTextColumn Header="Visszavétel dátuma" Binding="{Binding visszdatum}"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <StackPanel>
-                        <TextBox x:Name="id" Height="39" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="129"/>
-                        <TextBox x:Name="oid" Height="39" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="129"/>
-                        <TextBox x:Name="kid" Height="39" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="129"/>
-                        <TextBox x:Name="kd" Height="39" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="129"/>
-                        <TextBox x:Name="vd" Height="39" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="129"/>
-                    </StackPanel>
+                    <StackPanel/>
                 </DockPanel>
             </TabItem>
         </TabControl>
-        
+
     </Grid>
 </Window>
